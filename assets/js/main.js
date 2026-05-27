@@ -9,6 +9,13 @@
     $head = $("head"),
     $body = $("body");
 
+  // Prevent browser from restoring previous scroll position on navigation.
+  if (typeof history !== "undefined" && "scrollRestoration" in history) {
+    try {
+      history.scrollRestoration = "manual";
+    } catch (e) {}
+  }
+
   // Breakpoints.
   breakpoints({
     xlarge: ["1281px", "1680px"],
@@ -26,6 +33,10 @@
   // ... loaded.
   $window.on("load", function () {
     window.setTimeout(function () {
+      // Ensure page opens at top.
+      try {
+        window.scrollTo(0, 0);
+      } catch (e) {}
       $body.removeClass("is-preload");
     }, 100);
   });
@@ -256,6 +267,80 @@
           closeOverlay();
         }
       }
+    });
+  })();
+  // Contact form AJAX submit with inline confirmation (no redirect to Formspree)
+  (function () {
+    // Run after DOM ready
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.querySelector(
+        "form#contact-form[action*='formspree.io']",
+      );
+      if (!form) return;
+
+      function createOverlay() {
+        var ov = document.createElement("div");
+        ov.className = "form-confirm-overlay";
+        ov.innerHTML =
+          '<div class="form-confirm" role="dialog" aria-modal="true"><button class="form-confirm-close" aria-label="Schließen"><i class="fas fa-times" aria-hidden="true"></i></button><div class="form-confirm-message"></div></div>';
+        document.body.appendChild(ov);
+        ov.addEventListener("click", function (e) {
+          if (e.target === ov) ov.classList.remove("visible");
+        });
+        ov.querySelector(".form-confirm-close").addEventListener(
+          "click",
+          function () {
+            ov.classList.remove("visible");
+          },
+        );
+        return ov;
+      }
+
+      var overlay = createOverlay();
+
+      function showMessage(msg, isError) {
+        overlay.querySelector(".form-confirm-message").textContent = msg;
+        overlay.classList.toggle("error", !!isError);
+        overlay.classList.add("visible");
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var submit = form.querySelector("input[type=submit]");
+        if (submit) submit.disabled = true;
+        var data = new FormData(form);
+
+        fetch(form.action, {
+          method: form.method || "POST",
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then(function (response) {
+            if (response.ok)
+              return response.json().catch(function () {
+                return {};
+              });
+            return response.json().then(function (json) {
+              var err = (json && json.error) || "Fehler beim Senden.";
+              throw new Error(err);
+            });
+          })
+          .then(function () {
+            showMessage("Vielen Dank! Ihre Nachricht wurde gesendet.");
+            form.reset();
+          })
+          .catch(function (err) {
+            showMessage(
+              "Beim Senden ist ein Fehler aufgetreten: " + err.message,
+              true,
+            );
+          })
+          .finally(function () {
+            if (submit) submit.disabled = false;
+          });
+      });
     });
   })();
 })(jQuery);

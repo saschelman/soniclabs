@@ -1,10 +1,26 @@
 <!doctype html>
-<html>
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sonic Labs | Kontakt</title>
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" href="images/Sonic%20Labs%20Logo.png" type="image/png" />
+    <meta
+      name="description"
+      content="Kontakt zu Sonic Labs — Anfrage, Beratung und Support für Veranstaltungstechnik. Kontaktformular und Kontaktdaten."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Sonic Labs | Kontakt" />
+    <meta
+      property="og:description"
+      content="Kontaktformular und Kontaktdaten für Beratung und Anfragen."
+    />
+    <meta
+      property="og:image"
+      content="https://soniclabs-r2.com/images/Sonic%20Labs%20Logo.png"
+    />
+    <link rel="canonical" href="https://soniclabs-r2.com/kontakt.html" />
   </head>
   <body class="is-preload">
     <div id="wrapper">
@@ -17,13 +33,13 @@
             <ul class="icons">
               <li>
                 <a
-                  href="mailto:info@pa-anlagen.de"
+                  href="mailto:info@soniclabs-r2.com"
                   class="icon solid fa-envelope"
                   ><span class="label">E-Mail</span></a
                 >
               </li>
               <li>
-                <a href="tel:+490000000000" class="icon solid fa-phone"
+                <a href="tel:+4915786787956" class="icon solid fa-phone"
                   ><span class="label">Telefon</span></a
                 >
               </li>
@@ -32,8 +48,16 @@
 
           <section>
             <header class="main"><h1>Kontakt</h1></header>
-            <p>Schreib mir: info@pa-anlagen.de oder ruf an: +49 000 000000</p>
-            <form method="post" action="#">
+            <p>
+              Schreib mir: info@soniclabs-r2.com oder fülle das Kontaktformular
+              aus
+            </p>
+            <form
+              id="contact-form"
+              method="POST"
+              action="https://formspree.io/f/mdajyknw"
+              accept-charset="UTF-8"
+            >
               <div class="row gtr-uniform">
                 <div class="col-6 col-12-xsmall">
                   <input type="text" name="name" id="name" placeholder="Name" />
@@ -41,9 +65,17 @@
                 <div class="col-6 col-12-xsmall">
                   <input
                     type="email"
-                    name="email"
+                    name="_replyto"
                     id="email"
                     placeholder="E-Mail"
+                  />
+                </div>
+                <div class="col-6 col-12-xsmall">
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    placeholder="Telefon"
                   />
                 </div>
                 <div class="col-12">
@@ -86,7 +118,7 @@
             </ul>
           </nav>
           <footer id="footer">
-            <p class="copyright">&copy; Sonic Labs</p>
+            <p class="copyright">&copy; SonicLabs R2</p>
           </footer>
         </div>
       </div>

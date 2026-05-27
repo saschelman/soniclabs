@@ -125,31 +125,27 @@ video {
 }
 .form-confirm-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  font-size: 1.05em;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font-size: 1.2em;
   line-height: 1;
   cursor: pointer;
   color: #007bff;
+  box-shadow: none;
 }
 .form-confirm-close i {
   pointer-events: none;
 }
 .form-confirm-close:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.12);
+  box-shadow: none;
 }
-.form-confirm-close:hover {
-  background: #f7fbff;
+.form-confirm-close:hover i {
+  color: #0056b3;
 }
 .form-confirm-message {
   font-size: 1em;
@@ -1925,27 +1921,25 @@ input[type="radio"] + label:before {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  width: 44px;
-  height: 44px;
-  background: rgba(0, 0, 0, 0.45);
+  padding: 0;
+  background: transparent;
   border: none;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 1.2rem;
+  color: #007bff;
+  font-size: 1.4rem;
   line-height: 1;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10000;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  box-shadow: none;
 }
 .lightbox-close:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.12);
+  outline: none;
+  box-shadow: none;
 }
-.lightbox-close:hover {
-  transform: scale(1.05);
-  background: rgba(0, 0, 0, 0.55);
+.lightbox-close:hover i {
+  color: #0056b3;
 }
 
 @media screen and (max-width: 736px) {

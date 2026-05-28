@@ -2417,6 +2417,27 @@ button.fit,
     grid-template-columns: 1fr;
   }
 }
+/* Responsive adjustments for main action buttons */
+@media (max-width: 736px) {
+  ul.actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0;
+  }
+  ul.actions li {
+    padding: 0.6em 0 0 0;
+    width: 100%;
+  }
+  ul.actions li:first-child {
+    padding-top: 0;
+  }
+  ul.actions li > a.button,
+  ul.actions li > .button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 input[type="submit"].small,
 input[type="reset"].small,
 input[type="button"].small,
